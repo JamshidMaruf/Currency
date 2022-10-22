@@ -1,0 +1,68 @@
+﻿<Page x:Class="Currency.Desktop.Controls.Item"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Currency.Desktop.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="60" d:DesignWidth="600" Background="white"
+      Title="Item">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TextBlock x:Name="Cur_Abbreviation"
+                           FontSize="22"
+                           FontWeight="DemiBold"
+                           HorizontalAlignment="Left"
+                           Margin="12,2,2,2"
+                           Padding="1"/>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <TextBlock x:Name="Cur_Scale"
+                           FontSize="16"
+                           HorizontalAlignment="Left"
+                           Margin="12,2,2,2"/>
+                </Grid>
+                
+                <Grid Grid.Column="1">
+                    <TextBlock x:Name="Cur_Name"
+                           FontSize="16"
+                           HorizontalAlignment="Left"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Column="1">
+            <TextBlock x:Name="Cur_OfficialRate"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Width="100"/>
+        </Grid>
+        
+        <Grid Grid.Column="2">
+            <TextBlock 
+                       Text="1,9231"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Width="100"/>
+        </Grid>
+    </Grid>
+</Page>
