@@ -16,9 +16,9 @@ using System.Windows.Shapes;
 namespace Currency.Desktop.Controls
 {
     /// <summary>
-    /// Interaction logic for Item.xaml
+    /// Interaction logic for Item1.xaml
     /// </summary>
-    public partial class Item : Page
+    public partial class Item : UserControl
     {
         public Item()
         {

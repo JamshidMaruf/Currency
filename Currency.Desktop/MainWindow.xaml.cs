@@ -2,6 +2,7 @@
 using Currency.Core.Services;
 using Currency.Desktop.Controls;
 using Currency.Desktop.Pages;
+using Currency.Desktop.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,11 @@ using System.Windows.Shapes;
 
 namespace Currency.Desktop;
 
-#pragma warning disable
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
+
+#pragma warning disable
 public partial class MainWindow : Window
 {
     private readonly CurrencyService currencyService;
@@ -34,11 +36,14 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
+
     private IEnumerable<CurrencyEntity> currencies;
 
-    private void SettingBtn_Click(object sender, RoutedEventArgs e)
+    private void SettingButton_Click(object sender, RoutedEventArgs e)
     {
-        InputerArea.Content = new SettingPage();
+        SettingWindow settingWindow = new SettingWindow();
+        this.Visibility = Visibility.Hidden;
+        settingWindow.Show();
     }
 
     private async Task LoadCurrencies(IEnumerable<CurrencyEntity> currencies)
@@ -48,28 +53,19 @@ public partial class MainWindow : Window
             await this.Dispatcher.InvokeAsync(() =>
             {
                 Item item = new();
-
-                item.Cur_Name.Text = currency.Name;
                 item.Cur_Abbreviation.Text = currency.Abbreviation;
-                item.Cur_OfficialRate.DataContext = currency.OfficialRate;
-                item.Cur_Scale.DataContext = currency.Scale;
+                item.Cur_OfficialRate2.Text = currency.OfficialRate.ToString();
+                item.Cur_Scale.Text = currency.Scale.ToString() +" "+ currency.Name;
+                today.Text = currencies.First().Date.ToString("dd.mm.yyyy");
 
                 CurrenciesList.Items.Add(item);
             });
         }
     }
 
-    private void SaveBtn_Click()
-    {
-
-    }
-    private void CloseWindow_MouseDown(object sender, MouseButtonEventArgs e)
-    {
-        this.Close();
-    }
-
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
+        
         thread = new Thread(async () =>
         {
             Dispatcher.Invoke(() => CurrenciesList.Items.Clear());
@@ -80,5 +76,46 @@ public partial class MainWindow : Window
         });
 
         thread.Start();
+    }
+
+    private void CloseWindow_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        this.Close();
+    }
+
+    private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+    {
+        if(e.ChangedButton == MouseButton.Left)
+        {
+            this.DragMove();
+        }
+    }
+
+    private bool IsMaximized = false;
+    private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ClickCount == 2)
+        {
+            if (IsMaximized)
+            {
+                this.WindowState = WindowState.Normal;
+                this.Width = 600;
+                this.Height = 700;
+
+                IsMaximized = false;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+
+                IsMaximized = true;
+            }
+        }
+    }
+
+    private async void GetPreviousDayData()
+    {
+        var cc = await currencyService.GetAllFromDataBaseAsync();
+        previousDay.Text = cc.First().Date.Day.ToString();
     }
 }

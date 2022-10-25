@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Desktop", "Currenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Core", "Currency.Core\Currency.Core.csproj", "{51F702EC-BFFD-450D-89CD-1315363CA610}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Web", "Currency.Web\Currency.Web.csproj", "{E51B0DCC-85AC-44C2-B2C1-6A5838371375}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{51F702EC-BFFD-450D-89CD-1315363CA610}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51F702EC-BFFD-450D-89CD-1315363CA610}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51F702EC-BFFD-450D-89CD-1315363CA610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E51B0DCC-85AC-44C2-B2C1-6A5838371375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E51B0DCC-85AC-44C2-B2C1-6A5838371375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E51B0DCC-85AC-44C2-B2C1-6A5838371375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E51B0DCC-85AC-44C2-B2C1-6A5838371375}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

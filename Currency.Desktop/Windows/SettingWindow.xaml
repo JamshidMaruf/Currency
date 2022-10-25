@@ -1,0 +1,78 @@
+﻿<Window x:Class="Currency.Desktop.Windows.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Currency.Desktop.Windows"
+        mc:Ignorable="d" Title="SettingWindow"
+        Height="700" Width="600"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True">
+    <Border CornerRadius="30" 
+            MouseDown="Border_MouseDown"
+            MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="22*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#797979">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Button x:Name="Backbtn"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="BackButton_Click">
+                    <Icon:PackIconMaterial Kind="KeyboardBackspace"
+                                           VerticalAlignment="Center" 
+                                           Width="20"
+                                           Foreground="White"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <TextBlock Text="Настройка валюта"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="26"
+                           Foreground="White"/>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Button x:Name="CheckBtn"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="CheckButton_Click">
+                    <Icon:PackIconMaterial x:Name="SaveBtn"
+                                           Kind="Check"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Width="26"
+                                           Foreground="White"/>
+                </Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#EFEFF4"/>
+
+        <Grid Grid.Row="2" Background="White">
+            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ItemsControl Name="CurrenciesList" PreviewMouseLeftButtonDown="CurrenciesList_PreviewMouseLeftButtonDown"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+    </Border>
+</Window>

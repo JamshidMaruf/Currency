@@ -1,0 +1,60 @@
+﻿@using Currency.Core.Models
+@using Currency.Web.Configurations
+
+@model List<CurrencyEntity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div>
+    <h3 class="display-4 text-center">Курсы валют</h3>
+    <br/>
+    
+    <input type="button" value="Настройки" onclick="location.href='@Url.Action("Setting")'" />
+
+    <br/>
+    <br/>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Aббревиатура</th>
+                <th>Имя</th>
+                <th>@Model.First().Date.ToString("dd.mm.yyyy")</th>
+                <th>@Model.First().Date.ToString("dd.mm.yyyy")</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Abbreviation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Scale)
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfficialRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfficialRate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>

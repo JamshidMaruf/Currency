@@ -1,0 +1,79 @@
+﻿@using Currency.Core.Models
+@using Currency.Web.Configurations
+
+@model List<CurrencyEntity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <h3 class="display-4 text-center">Настройка валют</h3>
+    <br/>
+
+    <input type="button" 
+           name="backButton"
+           id="backButton"
+           value="Назад"
+           style="position:relative; float:left; margin-right:63px;"
+           onclick="window.location.href='Index'"/>
+    <input type="button"
+           name="backButton"
+           id="backButton"
+           value="Сохранять"
+           style="position:relative; float:right; margin-right:63px;"
+           onclick="window.location.href='Index'"/>
+
+    <br/>
+    <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Aббревиатура</th>
+                <th>Имя</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+
+        <tbody  id="list">
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Abbreviation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Scale)
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfficialRate)
+                    </td>
+                    <td>
+                        <div class="form-check form-switch">
+                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                             <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="submit" id="hamburger-menu" data-toggle="ham-navigation" class="hamburger-menu-button">
+                            <span class="hamburger-menu-button-open"></span>   
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/js/Sortable.js"></script>
+<script src="~/js/site.js"></script>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
