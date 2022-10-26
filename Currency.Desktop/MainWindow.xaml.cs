@@ -1,23 +1,13 @@
 ﻿using Currency.Core.Models;
 using Currency.Core.Services;
 using Currency.Desktop.Controls;
-using Currency.Desktop.Pages;
 using Currency.Desktop.Windows;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Currency.Desktop;
 
@@ -48,14 +38,14 @@ public partial class MainWindow : Window
 
     private async Task LoadCurrencies(IEnumerable<CurrencyEntity> currencies)
     {
-        foreach(var currency in currencies)
+        foreach (var currency in currencies)
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
                 Item item = new();
                 item.Cur_Abbreviation.Text = currency.Abbreviation;
                 item.Cur_OfficialRate2.Text = currency.OfficialRate.ToString();
-                item.Cur_Scale.Text = currency.Scale.ToString() +" "+ currency.Name;
+                item.Cur_Scale.Text = currency.Scale.ToString() + " " + currency.Name;
                 today.Text = currencies.First().Date.ToString("dd.mm.yyyy");
 
                 CurrenciesList.Items.Add(item);
@@ -65,7 +55,7 @@ public partial class MainWindow : Window
 
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        
+
         thread = new Thread(async () =>
         {
             Dispatcher.Invoke(() => CurrenciesList.Items.Clear());
@@ -85,7 +75,7 @@ public partial class MainWindow : Window
 
     private void Border_MouseDown(object sender, MouseButtonEventArgs e)
     {
-        if(e.ChangedButton == MouseButton.Left)
+        if (e.ChangedButton == MouseButton.Left)
         {
             this.DragMove();
         }

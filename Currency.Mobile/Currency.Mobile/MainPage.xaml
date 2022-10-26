@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:Currency.Mobile.Models"
+             xmlns:viewmodel="clr-namespace:Currency.Mobile.ViewModels"
+             xmlns:local="clr-namespace:Currency.Mobile.Models"
+             x:DataType="viewmodel:CurrencyViewModel"
+             x:Class="Currency.Mobile.MainPage">
+
+
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="#737979">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Button Margin="6"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            BackgroundColor="White">
+
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Label Text="Курсы валюта"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           TextColor="White"/>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Button Margin="6"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            BackgroundColor="White"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" BackgroundColor="#EFEFF4" Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="2" VerticalOptions="Center">
+                    <Label Text="12.06.2022"/>
+                </Grid>
+
+                <Grid Grid.Column="3" VerticalOptions="Center">
+                    <Label Text="13.06.2022"/>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <RefreshView x:DataType="viewmodel:CurrencyViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <CollectionView x:Name="ItemsListView"
+                                ItemsSource="{Binding Items}"
+                                SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="10" x:DataType="model:CurrencyEntity">
+                                    <Label Text="{Binding Name}"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       FontSize="16"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </Grid>
+        </Grid>
+    </StackLayout>
+</ContentPage>

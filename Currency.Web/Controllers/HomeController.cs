@@ -1,7 +1,5 @@
 ﻿using Currency.Core.Interfaces;
-using Currency.Core.Models;
 using Currency.Core.Services;
-using Currency.Web.Configurations;
 using Currency.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;

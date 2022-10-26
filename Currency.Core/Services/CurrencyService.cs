@@ -4,11 +4,6 @@ using Currency.Core.Interfaces;
 using Currency.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Currency.Core.Services
 {
@@ -27,11 +22,11 @@ namespace Currency.Core.Services
 
             foreach (var currency in currencies)
             {
-                foreach(var currencyFromDatabese in currenciesFromDatabese)
+                foreach (var currencyFromDatabese in currenciesFromDatabese)
                 {
-                    if(currency != currencyFromDatabese)
+                    if (currency != currencyFromDatabese)
                         this.appDbContext.Add(currency);
-                        await this.appDbContext.SaveChangesAsync();
+                    await this.appDbContext.SaveChangesAsync();
                 }
             }
         }
@@ -57,7 +52,7 @@ namespace Currency.Core.Services
         {
             // Get objects of previos day
             var currencies = await GetAllAsync();
-            var date = currencies.First().Date.Day - 1; 
+            var date = currencies.First().Date.Day - 1;
 
             var result = await this.appDbContext.Currencies.Where(currency => currency.Date.Day == date).ToListAsync();
 

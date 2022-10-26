@@ -43,7 +43,7 @@
                         <Icon:PackIconMaterial x:Name="BackBtn"
                                                Kind="KeyboardBackspace" 
                                                VerticalAlignment="Center" 
-                                               Width="26"/>
+                                               Width="20"/>
                     </Button>
                 </Grid>
 

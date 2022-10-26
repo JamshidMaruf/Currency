@@ -13,66 +13,66 @@
     <Border CornerRadius="30" 
             MouseDown="Border_MouseDown"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="22*"/>
-        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="22*"/>
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="#797979">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="8*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Background="#797979">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
-                <Button x:Name="Backbtn"
+                <Grid Grid.Column="0">
+                    <Button x:Name="Backbtn"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
                         BorderThickness="0"
                         Click="BackButton_Click">
-                    <Icon:PackIconMaterial Kind="KeyboardBackspace"
+                        <Icon:PackIconMaterial Kind="KeyboardBackspace"
                                            VerticalAlignment="Center" 
                                            Width="20"
                                            Foreground="White"/>
-                </Button>
-            </Grid>
+                    </Button>
+                </Grid>
 
-            <Grid Grid.Column="1">
-                <TextBlock Text="Настройка валюта"
+                <Grid Grid.Column="1">
+                    <TextBlock Text="Настройка валюта"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            FontSize="26"
                            Foreground="White"/>
-            </Grid>
+                </Grid>
 
-            <Grid Grid.Column="2">
-                <Button x:Name="CheckBtn"
+                <Grid Grid.Column="2">
+                    <Button x:Name="CheckBtn"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="Transparent"
                         BorderThickness="0"
                         Click="CheckButton_Click">
-                    <Icon:PackIconMaterial x:Name="SaveBtn"
+                        <Icon:PackIconMaterial x:Name="SaveBtn"
                                            Kind="Check"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"
                                            Width="26"
                                            Foreground="White"/>
-                </Button>
+                    </Button>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="#EFEFF4"/>
+
+            <Grid Grid.Row="2" Background="White">
+                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ItemsControl Name="CurrenciesList" PreviewMouseLeftButtonDown="CurrenciesList_PreviewMouseLeftButtonDown"/>
+                </ScrollViewer>
             </Grid>
         </Grid>
-
-        <Grid Grid.Row="1" Background="#EFEFF4"/>
-
-        <Grid Grid.Row="2" Background="White">
-            <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <ItemsControl Name="CurrenciesList" PreviewMouseLeftButtonDown="CurrenciesList_PreviewMouseLeftButtonDown"/>
-            </ScrollViewer>
-        </Grid>
-    </Grid>
     </Border>
 </Window>
