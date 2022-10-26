@@ -8,9 +8,9 @@
              d:DesignHeight="60" d:DesignWidth="600">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="352*"/>
+            <ColumnDefinition Width="129*"/>
+            <ColumnDefinition Width="119*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -34,12 +34,11 @@
                 <TextBlock
                         x:Name="Cur_Scale"
                         FontSize="16"
-                        HorizontalAlignment="Left"
-                        Margin="13,0,0,0" Width="287"/>
+                        Margin="13,0,-19,0"/>
             </Grid>
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="22,0,1,0">
             <TextBlock
                 x:Name="Cur_OfficialRate"
                 FontSize="20"

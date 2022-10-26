@@ -44,9 +44,11 @@ public partial class MainWindow : Window
             {
                 Item item = new();
                 item.Cur_Abbreviation.Text = currency.Abbreviation;
+                item.Cur_OfficialRate.Text = currency.OfficialRate.ToString();
                 item.Cur_OfficialRate2.Text = currency.OfficialRate.ToString();
                 item.Cur_Scale.Text = currency.Scale.ToString() + " " + currency.Name;
-                today.Text = currencies.First().Date.ToString("dd.mm.yyyy");
+                today.Text = currencies.First().Date.ToString("dd.M.yy");
+                previousDay.Text = currencies.First().Date.ToString("dd.M.yy");
 
                 CurrenciesList.Items.Add(item);
             });

@@ -70,28 +70,32 @@
             <Grid Background="#EFEFF4" Margin="-6,77,10,5" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="298*"/>
-                    <ColumnDefinition Width="113*"/>
-                    <ColumnDefinition Width="185*"/>
+                    <ColumnDefinition Width="153*"/>
+                    <ColumnDefinition Width="145*"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid Margin="282,2,22,2" Grid.ColumnSpan="2">
+                <Grid Margin="6,2,0,2" Grid.Column="1">
                     <TextBlock x:Name="previousDay"
-                           HorizontalAlignment="Center"
+                           HorizontalAlignment="Left"
                            VerticalAlignment="Center"
-                           FontSize="18"/>
+                           FontSize="16" Margin="66,0,0,0"/>
                 </Grid>
 
-                <Grid Grid.Column="2">
+                <Grid Grid.Column="2" Margin="5,0,5,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="185*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="29*"/>
                         <RowDefinition Height="9*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Margin="-35,0,35,0" Grid.RowSpan="3"/>
+                    <TextBlock Margin="24,0,4,0" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
                     <TextBlock x:Name="today"
-                           HorizontalAlignment="Center"
+                           HorizontalAlignment="Left"
                            VerticalAlignment="Top"
-                           FontSize="18" Margin="0,13,0,0" Grid.RowSpan="2"/>
+                           FontSize="16" Margin="24,14,0,0" Grid.RowSpan="2"/>
                 </Grid>
             </Grid>
 
