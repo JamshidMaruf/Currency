@@ -60,9 +60,9 @@
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderThickness="0"
-                            Click="SettingButton_Click">
+                            Click="SettingButton_Click" Height="46">
                         <Icon:PackIconMaterial x:Name="SettingBtn"
-                                               Kind="TableSettings"/>
+                                               Kind="Cog" Height="23" Width="29"/>
                     </Button>
                 </Grid>
             </Grid>
