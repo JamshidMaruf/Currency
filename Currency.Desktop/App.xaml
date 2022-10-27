@@ -12,6 +12,160 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Start: Button | Minimize | Maximize | Close -->
+            <Style x:Key="IconButtonsStyle" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Width" Value="25"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Name="bd" CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Path Name="ico" Data="{TemplateBinding Content}" Fill="{DynamicResource ActionIconColor}" Height="10" Width="10" Stretch="Uniform"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource SecundaryBackgroundColor}"/>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsMouseOver" Value="True"/>
+                                        <Condition Property="Tag" Value="IsCloseButton"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="Background" Value="#F72626"/>
+                                    <Setter TargetName="ico" Property="Fill" Value="{DynamicResource PrimaryBackgroundColor}"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="ico" Property="Fill" Value="{DynamicResource PrimaryBackgroundColor}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!-- End: Button | Minimize | Maximize | Close -->
+
+
+            <!-- Minimize | Maximized | Restore | Close Icons -->
+            <PathGeometry x:Key="minimize" Figures="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"/>
+            <PathGeometry x:Key="maximize" Figures="M18 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3zM6 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z"/>
+            <PathGeometry x:Key="restore" Figures="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1z M15 11H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2z"/>
+            <PathGeometry x:Key="close" Figures="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"/>
+
+            <!-- Background Colors -->
+            <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#f3f3f3"/>
+            <SolidColorBrush x:Key="SecundaryBackgroundColor" Color="#f9f9f9"/>
+
+            <!-- Primary Colors -->
+            <SolidColorBrush x:Key="PrimaryBlueColor" Color="#5B7FFF"/>
+            <SolidColorBrush x:Key="PrimaryGrayColor" Color="#BFBFC4"/>
+
+            <!-- Secundary Colors -->
+            <SolidColorBrush x:Key="SecundaryBlueColor" Color="#CEE8FB"/>
+            <SolidColorBrush x:Key="SecundaryGrayColor" Color="#EEEEEE"/>
+
+            <!-- Typograhy Colors -->
+            <SolidColorBrush x:Key="TextPrimaryColor" Color="#020F16"/>
+            <SolidColorBrush x:Key="TextSecundaryColor" Color="#434344"/>
+
+            <!-- Icons Colors -->
+            <SolidColorBrush x:Key="ActionIconColor" Color="#434344"/>
+
+            <!-- Start: Menu Icon -->
+            <Style x:Key="MenuIconStyle" TargetType="{x:Type ToggleButton}">
+                <Setter Property="Width" Value="30"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <Viewbox Height="20" Width="20" Margin="0 6 0 0" Stretch="UniformToFill">
+                                    <Canvas Height="512" Width="512">
+                                        <Path x:Name="ico" Data="m32 0h448c17.671875 0 32 14.328125 32 32s-14.328125 32-32 32h-448c-17.671875 0-32-14.328125-32-32s14.328125-32 32-32zm0 0" Fill="{DynamicResource PrimaryGrayColor}" Margin="0 0 0 0"/>
+                                        <Path x:Name="ico1" Data="m32 128h448c17.671875 0 32 14.328125 32 32s-14.328125 32-32 32h-448c-17.671875 0-32-14.328125-32-32s14.328125-32 32-32zm0 0" Fill="{DynamicResource PrimaryGrayColor}" Margin="0 20 0 0"/>
+                                        <Path x:Name="ico2" Data="m32 256h448c17.671875 0 32 14.328125 32 32s-14.328125 32-32 32h-448c-17.671875 0-32-14.328125-32-32s14.328125-32 32-32zm0 0" Fill="{DynamicResource PrimaryGrayColor}" Margin="0 40 0 0"/>
+                                    </Canvas>
+                                </Viewbox>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#FFFFFF"/>
+                                    <Setter Property="Fill" TargetName="ico" Value="{DynamicResource PrimaryBlueColor}"/>
+                                    <Setter Property="Fill" TargetName="ico1" Value="{DynamicResource PrimaryBlueColor}"/>
+                                    <Setter Property="Fill" TargetName="ico2" Value="{DynamicResource PrimaryBlueColor}"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="#FFFFFF"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!-- End: Menu Icon -->
+
+            <!-- Start: VerticalMenuStyle -->
+            <Style x:Key="MenuRadioButtonStyle" TargetType="{x:Type RadioButton}">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryGrayColor}"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FontWeight" Value="Normal"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type RadioButton}">
+                            <Border x:Name="menuButton"  Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="45"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Selected  -->
+                                    <Border x:Name="btnSelected" Grid.ColumnSpan="2"  CornerRadius="4" Width="210" HorizontalAlignment="Right"/>
+
+                                    <!-- Indicator -->
+                                    <Rectangle Name="Indicator" HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
+
+                                    <!-- Icon -->
+                                    <Path x:Name="Icon" Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}" Height="24" Width="24" Stretch="None" Fill="{DynamicResource PrimaryGrayColor}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+
+                                    <!-- Text -->
+                                    <TextBlock x:Name="txtName" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
+                                                Grid.Column="1" Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                                                FontWeight="{TemplateBinding FontWeight}"
+                                                FontSize="{TemplateBinding FontSize}"/>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="txtName" Property="Foreground" Value="{DynamicResource PrimaryBlueColor}"/>
+                                    <Setter TargetName="Icon" Property="Fill" Value="{DynamicResource PrimaryBlueColor}"/>
+                                    <!-- Optional 
+                            <Setter TargetName="Indicator" Property="Fill" Value="red"/>
+                            <Setter TargetName="Indicator" Property="Height" Value="20"/>-->
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="Icon" Property="Fill" Value="{DynamicResource PrimaryBlueColor}"/>
+                                    <Setter TargetName="Indicator" Property="Fill" Value="{DynamicResource PrimaryBlueColor}"/>
+                                    <Setter TargetName="Indicator" Property="Height" Value="20"/>
+                                    <Setter TargetName="btnSelected" Property="Background" Value="{DynamicResource SecundaryGrayColor}"/>
+                                    <Setter TargetName="txtName" Property="Foreground" Value="{DynamicResource PrimaryBlueColor}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <!-- End: VerticalMenuStyle -->
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

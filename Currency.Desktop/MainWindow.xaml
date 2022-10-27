@@ -23,18 +23,57 @@
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="22*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Background="#797979">
+            <Grid Grid.Row="0" Background="AliceBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0"
+                            Grid.Column="2" 
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="0,5,10,0" Height="30"
+                            Orientation="Horizontal"
+                            FlowDirection="RightToLeft">
+                    <Button x:Name="btnClose" 
+                            Style="{StaticResource IconButtonsStyle}"
+                            Content="{DynamicResource close}"
+                            Click="btnClose_Click"
+                            Tag="IsCloseButton"/>
+                    <Button x:Name="btnRestore"
+                            Margin="5,0"
+                            Click="btnRestore_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource IconButtonsStyle}">
+                                <Setter Property="Content" Value="{DynamicResource maximize}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=home, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="Content" Value="{DynamicResource restore}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="btnMinimize" Style="{DynamicResource IconButtonsStyle}" Content="{DynamicResource minimize}" Click="btnMinimize_Click"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="#797979">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-
+                
                 <Grid Grid.Column="0">
                     <Button HorizontalAlignment="Center"
                             VerticalAlignment="Center"
@@ -67,7 +106,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Background="#EFEFF4" Margin="-6,77,10,5" Grid.RowSpan="2">
+            <Grid Grid.Row="2" Background="#EFEFF4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="298*"/>
                     <ColumnDefinition Width="153*"/>
@@ -82,16 +121,6 @@
                 </Grid>
 
                 <Grid Grid.Column="2" Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="185*"/>
-                        <ColumnDefinition Width="4*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="29*"/>
-                        <RowDefinition Height="9*"/>
-                        <RowDefinition Height="10*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Margin="24,0,4,0" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
                     <TextBlock x:Name="today"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Top"
@@ -99,7 +128,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="3">
                 <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <ItemsControl Name="CurrenciesList"/>
                 </ScrollViewer>

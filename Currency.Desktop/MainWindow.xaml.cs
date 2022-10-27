@@ -110,4 +110,22 @@ public partial class MainWindow : Window
         var cc = await currencyService.GetAllFromDataBaseAsync();
         previousDay.Text = cc.First().Date.Day.ToString();
     }
+
+    private void btnClose_Click(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void btnRestore_Click(object sender, RoutedEventArgs e)
+    {
+        if (WindowState == WindowState.Normal)
+            WindowState = WindowState.Maximized;
+        else
+            WindowState = WindowState.Normal;
+    }
+
+    private void btnMinimize_Click(object sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState.Minimized;
+    }
 }
