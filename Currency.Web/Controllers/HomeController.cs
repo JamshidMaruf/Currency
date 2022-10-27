@@ -18,12 +18,12 @@ namespace Currency.Web.Controllers
 
         public async ValueTask<IActionResult> Index(string searchString)
         {
-            var currencies = await this.currencyService.GetAllAsync();
+            var currencies = await this.currencyService.GetOrderedItemsAsync();
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 searchString = searchString.ToUpper();
-                currencies = currencies.Where(p => p.Abbreviation.Contains(searchString));
+                //currencies = currencies.Where(p => p.Abbreviation.Contains(searchString));
             }
 
             return View(currencies);
@@ -31,7 +31,7 @@ namespace Currency.Web.Controllers
 
         public async ValueTask<IActionResult> Setting()
         {
-            var currencies = await this.currencyService.GetAllAsync();
+            var currencies = await this.currencyService.GetOrderedItemsAsync();
             return View(currencies);
         }
 
