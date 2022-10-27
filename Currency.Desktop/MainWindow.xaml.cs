@@ -27,7 +27,7 @@ public partial class MainWindow : Window
     }
 
 
-    private IEnumerable<CurrencyEntity> currencies;
+    public IList<CurrencyEntity> currencies;
 
     private void SettingButton_Click(object sender, RoutedEventArgs e)
     {

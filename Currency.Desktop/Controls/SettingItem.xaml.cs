@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -11,9 +12,11 @@ namespace Currency.Desktop.Controls
     /// </summary>
     public partial class SettingItem : UserControl
     {
+        private MainWindow mainWindow;
         public SettingItem()
         {
             InitializeComponent();
+            this.mainWindow = new MainWindow();
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -187,7 +190,9 @@ namespace Currency.Desktop.Controls
 
         private async void toggleBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            if(e.Handled == false)
+            {
+            }
         }
     }
 }

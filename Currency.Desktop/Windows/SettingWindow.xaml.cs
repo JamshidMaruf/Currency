@@ -19,24 +19,22 @@ public partial class SettingWindow : Window
 {
     private readonly ICurrencyService currencyService;
     private Thread thread;
+    private MainWindow mainWindow;
     public SettingWindow()
     {
         this.currencyService = new CurrencyService();
         InitializeComponent();
+        this.mainWindow = new MainWindow();
     }
-
-    private IEnumerable<CurrencyEntity> currencies;
 
     private void BackButton_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow mainWindow = new MainWindow();
         this.Visibility = Visibility.Hidden;
         mainWindow.Show();
     }
 
     private void CheckButton_Click(object sender, RoutedEventArgs e)
     {
-        MainWindow mainWindow = new MainWindow();
         this.Visibility = Visibility.Hidden;
         mainWindow.Show();
     }
@@ -62,9 +60,9 @@ public partial class SettingWindow : Window
         {
             Dispatcher.Invoke(() => CurrenciesList.Items.Clear());
 
-            currencies = await currencyService.GetOrderedItemsAsync();
+            mainWindow.currencies = await currencyService.GetOrderedItemsAsync();
 
-            await LoadCurrencies(currencies);
+            await LoadCurrencies(mainWindow.currencies);
         });
 
         thread.Start();

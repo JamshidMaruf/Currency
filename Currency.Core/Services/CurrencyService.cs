@@ -65,31 +65,9 @@ namespace Currency.Core.Services
         {
             var currencies = await GetAllAsync();
 
-            IList<CurrencyEntity> result = currencies.ToList();
-            IList<CurrencyEntity> temp = new List<CurrencyEntity>();
-
-            result.Clear();
-            temp.Clear();
-
-            foreach(var currency in currencies)
-            {
-                if (currency.Abbreviation == "USD")
-                    result.Add(currency);
-
-                else if (currency.Abbreviation == "EUR")
-                    result.Add(currency);
-
-                else if (currency.Abbreviation == "RUB")
-                    result.Add(currency);
-
-                else
-                    temp.Add(currency);
-            }
-
-            foreach (var item in temp)
-                result.Add(item);
-
-            return result;
+            currencies = currencies.OrderByDescending(c => c.Abbreviation == "USD" || c.Abbreviation == "EUR" || c.Abbreviation == "RUB");
+          
+            return currencies.ToList();
         }
     }
 }
