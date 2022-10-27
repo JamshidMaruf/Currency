@@ -70,6 +70,12 @@ public partial class MainWindow : Window
         thread.Start();
     }
 
+    private async void GetPreviousDayData()
+    {
+        var cc = await currencyService.GetAllFromDataBaseAsync();
+        previousDay.Text = cc.First().Date.Day.ToString();
+    }
+
     private void CloseWindow_MouseDown(object sender, MouseButtonEventArgs e)
     {
         this.Close();
@@ -103,12 +109,6 @@ public partial class MainWindow : Window
                 IsMaximized = true;
             }
         }
-    }
-
-    private async void GetPreviousDayData()
-    {
-        var cc = await currencyService.GetAllFromDataBaseAsync();
-        previousDay.Text = cc.First().Date.Day.ToString();
     }
 
     private void btnClose_Click(object sender, RoutedEventArgs e)

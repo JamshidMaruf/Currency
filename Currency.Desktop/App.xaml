@@ -55,10 +55,6 @@
             <PathGeometry x:Key="restore" Figures="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1z M15 11H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2z"/>
             <PathGeometry x:Key="close" Figures="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"/>
 
-            <!-- Background Colors -->
-            <SolidColorBrush x:Key="PrimaryBackgroundColor" Color="#f3f3f3"/>
-            <SolidColorBrush x:Key="SecundaryBackgroundColor" Color="#f9f9f9"/>
-
             <!-- Primary Colors -->
             <SolidColorBrush x:Key="PrimaryBlueColor" Color="#5B7FFF"/>
             <SolidColorBrush x:Key="PrimaryGrayColor" Color="#BFBFC4"/>
@@ -66,10 +62,6 @@
             <!-- Secundary Colors -->
             <SolidColorBrush x:Key="SecundaryBlueColor" Color="#CEE8FB"/>
             <SolidColorBrush x:Key="SecundaryGrayColor" Color="#EEEEEE"/>
-
-            <!-- Typograhy Colors -->
-            <SolidColorBrush x:Key="TextPrimaryColor" Color="#020F16"/>
-            <SolidColorBrush x:Key="TextSecundaryColor" Color="#434344"/>
 
             <!-- Icons Colors -->
             <SolidColorBrush x:Key="ActionIconColor" Color="#434344"/>
