@@ -55,7 +55,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private async void Window_Loaded(object sender, RoutedEventArgs e)
+    public async void Window_Loaded(object sender, RoutedEventArgs e)
     {
 
         thread = new Thread(async () =>
@@ -70,11 +70,7 @@ public partial class MainWindow : Window
         thread.Start();
     }
 
-    private async void GetPreviousDayData()
-    {
-        var cc = await currencyService.GetAllFromDataBaseAsync();
-        previousDay.Text = cc.First().Date.Day.ToString();
-    }
+
 
     private void CloseWindow_MouseDown(object sender, MouseButtonEventArgs e)
     {

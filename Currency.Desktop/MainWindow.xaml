@@ -66,7 +66,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="1" Background="#797979">
+            <Grid Grid.Row="1" Background="#797979" x:Name="container">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -80,7 +80,7 @@
                             Background="Transparent"
                             BorderThickness="0">
                         <Icon:PackIconMaterial x:Name="BackBtn"
-                                               Kind="KeyboardBackspace" 
+                                               Kind="TableSettings" 
                                                VerticalAlignment="Center" 
                                                Width="20"/>
                     </Button>
@@ -95,12 +95,13 @@
                 </Grid>
 
                 <Grid Grid.Column="2">
-                    <Button HorizontalAlignment="Center"
+                    <Button x:Name="SettingBtn"
+                            HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Background="Transparent"
                             BorderThickness="0"
                             Click="SettingButton_Click" Height="46">
-                        <Icon:PackIconMaterial x:Name="SettingBtn"
+                        <Icon:PackIconMaterial 
                                                Kind="Cog" Height="23" Width="29"/>
                     </Button>
                 </Grid>

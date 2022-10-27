@@ -125,5 +125,4 @@ public partial class SettingWindow : Window
     {
         WindowState = WindowState.Minimized;
     }
-
 }
