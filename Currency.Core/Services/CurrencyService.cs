@@ -4,6 +4,7 @@ using Currency.Core.Interfaces;
 using Currency.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Linq.Expressions;
 
 namespace Currency.Core.Services
 {
@@ -55,6 +56,38 @@ namespace Currency.Core.Services
             var date = currencies.First().Date.Day - 1;
 
             var result = await this.appDbContext.Currencies.Where(currency => currency.Date.Day == date).ToListAsync();
+
+            return result;
+        }
+
+
+        public async ValueTask<IList<CurrencyEntity>> GetOrderedItemsAsync()
+        {
+            var currencies = await GetAllAsync();
+
+            IList<CurrencyEntity> result = currencies.ToList();
+            IList<CurrencyEntity> temp = new List<CurrencyEntity>();
+
+            result.Clear();
+            temp.Clear();
+
+            foreach(var currency in currencies)
+            {
+                if (currency.Abbreviation == "USD")
+                    result.Add(currency);
+
+                else if (currency.Abbreviation == "EUR")
+                    result.Add(currency);
+
+                else if (currency.Abbreviation == "RUB")
+                    result.Add(currency);
+
+                else
+                    temp.Add(currency);
+            }
+
+            foreach (var item in temp)
+                result.Add(item);
 
             return result;
         }

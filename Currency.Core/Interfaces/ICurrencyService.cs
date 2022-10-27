@@ -1,4 +1,5 @@
 ﻿using Currency.Core.Models;
+using System.Linq.Expressions;
 
 namespace Currency.Core.Interfaces;
 
@@ -21,4 +22,10 @@ public interface ICurrencyService
     /// </summary>
     /// <returns></returns>
     ValueTask<IEnumerable<CurrencyEntity>> GetAllAsync();
+
+    /// <summary>
+    /// Get order items 
+    /// </summary>
+    /// <returns></returns>
+    ValueTask<IList<CurrencyEntity>> GetOrderedItemsAsync();
 }

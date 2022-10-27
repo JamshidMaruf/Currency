@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -182,6 +183,11 @@ namespace Currency.Desktop.Controls
                     }
                 }
             }
+        }
+
+        private async void toggleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

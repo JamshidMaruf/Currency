@@ -72,8 +72,10 @@
             <Grid Grid.Column="1">
                 <Border CornerRadius="7" Margin="53,0,38,4">
                     <ToggleButton Width="50"
-                              Height="30"
-                              IsChecked="True"/>
+                                  Height="30"
+                                  IsChecked="True"
+                                  x:Name="toggleBtn"
+                                  Click="toggleBtn_Click"/>
                 </Border>
             </Grid>
 

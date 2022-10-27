@@ -62,7 +62,7 @@ public partial class MainWindow : Window
         {
             Dispatcher.Invoke(() => CurrenciesList.Items.Clear());
 
-            currencies = await currencyService.GetAllAsync();
+            currencies = await currencyService.GetOrderedItemsAsync();
 
             await LoadCurrencies(currencies);
         });
