@@ -10,7 +10,7 @@
         Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen" WindowStyle="None"
         AllowsTransparency="True">
-    <Border CornerRadius="30" 
+    <Border CornerRadius="8" 
             MouseDown="Border_MouseDown"
             MouseLeftButtonDown="Border_MouseLeftButtonDown">
         <Grid>

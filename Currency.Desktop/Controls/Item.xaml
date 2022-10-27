@@ -6,52 +6,68 @@
              xmlns:local="clr-namespace:Currency.Desktop.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="600">
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="352*"/>
-            <ColumnDefinition Width="129*"/>
-            <ColumnDefinition Width="119*"/>
-        </Grid.ColumnDefinitions>
+    <Border BorderThickness="2">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#6e60b5"/>
+                        <Setter Property="BorderBrush" Value="#6e60b5"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="352*"/>
+                <ColumnDefinition Width="129*"/>
+                <ColumnDefinition Width="119*"/>
+            </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="0">
-                <TextBlock 
-                    Text="USA"
-                    x:Name="Cur_Abbreviation"
-                    FontSize="20"
-                    FontWeight="Medium"
-                    HorizontalAlignment="Left"
-                    Margin="12,2,2,2"
-                    Padding="1"/>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock 
+                        Text="USA"
+                        x:Name="Cur_Abbreviation"
+                        FontSize="20"
+                        FontWeight="Medium"
+                        HorizontalAlignment="Left"
+                        Margin="12,2,2,2"
+                        Padding="1"/>
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <TextBlock
+                            x:Name="Cur_Scale"
+                            FontSize="16"
+                            Margin="13,0,-19,0"/>
+                </Grid>
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Column="1" Margin="22,0,1,0">
                 <TextBlock
-                        x:Name="Cur_Scale"
-                        FontSize="16"
-                        Margin="13,0,-19,0"/>
+                    x:Name="Cur_OfficialRate"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Width="100"/>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <TextBlock    
+                    x:Name="Cur_OfficialRate2"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Width="100"/>
             </Grid>
         </Grid>
-
-        <Grid Grid.Column="1" Margin="22,0,1,0">
-            <TextBlock
-                x:Name="Cur_OfficialRate"
-                FontSize="20"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" Width="100"/>
-        </Grid>
-
-        <Grid Grid.Column="2">
-            <TextBlock    
-                x:Name="Cur_OfficialRate2"
-                FontSize="20"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" Width="100"/>
-        </Grid>
-    </Grid>
+    </Border>
 </UserControl>

@@ -17,83 +17,39 @@
              d:DesignHeight="60"
              d:DesignWidth="600"
              AllowDrop="True">
-    <UserControl.Resources>
-        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
-            <Setter Property="Width" Value="50"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="MaxHeight" Value="30"/>
-            <Setter Property="MaxWidth" Value="50"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Grid >
-                            <Border x:Name="Border"
-                                    BorderBrush="Gray"
-                                    BorderThickness="1"
-                                    Background="White"
-                                    CornerRadius="7"
-                                    Height="20"
-                                    Width="40"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"/>
-                            <Ellipse x:Name="Ellipse"
-                                     Width="20"
-                                     Height="20"
-                                     HorizontalAlignment="Left"
-                                     VerticalAlignment="Center"
-                                     Fill="White"
-                                     Stroke="{TemplateBinding BorderBrush}"
-                                     StrokeThickness="2"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <EventTrigger RoutedEvent="Checked">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="Border"
-                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="#C2D1FC" Duration="0:0:00.2"/>
-                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
-                                                            Storyboard.TargetProperty="Margin"
-                                                            To="20,0,0,0" Duration="0:0:00.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="Unchecked">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="Border"
-                                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="White" Duration="0:0:00.2"/>
-                                        <ThicknessAnimation Storyboard.TargetName="Ellipse"
-                                                            Storyboard.TargetProperty="Margin"
-                                                            To="0,0,0,0" Duration="0:0:00.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
-    <Grid x:Name="dragDrop"
+    <Border BorderThickness="2">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#6e60b5"/>
+                        <Setter Property="BorderBrush" Value="#6e60b5"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        
+        <Grid x:Name="dragDrop"
           AllowDrop="True"
           DragOver="dragDrop_DragOver"
           Drop="dragDrop_Drop">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <TextBlock 
+                <Grid Grid.Row="0">
+                    <TextBlock 
                     x:Name="Cur_Abbreviation"
                     Text="USD"
                     FontSize="20"
@@ -101,28 +57,28 @@
                     HorizontalAlignment="Left"
                     Margin="12,2,2,2"
                     Padding="1"/>
-            </Grid>
+                </Grid>
 
-            <Grid Grid.Row="1">
-                <TextBlock
+                <Grid Grid.Row="1">
+                    <TextBlock
                         x:Name="Cur_Scale"
                         Text="1   "
                         FontSize="16"
                         HorizontalAlignment="Left"
                         Margin="13,0,0,0" Width="287"/>
+                </Grid>
             </Grid>
-        </Grid>
 
-        <Grid Grid.Column="1">
-            <Border CornerRadius="7" Margin="53,0,38,4">
-                <ToggleButton Width="50"
+            <Grid Grid.Column="1">
+                <Border CornerRadius="7" Margin="53,0,38,4">
+                    <ToggleButton Width="50"
                               Height="30"
                               IsChecked="True"/>
-            </Border>
-        </Grid>
+                </Border>
+            </Grid>
 
-        <Grid Grid.Column="2">
-            <TextBlock FontSize="20"
+            <Grid Grid.Column="2">
+                <TextBlock FontSize="20"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center">
                 <Icon:PackIconMaterial Kind="Menu"
@@ -130,7 +86,8 @@
                                        VerticalAlignment="Center"
                                        Width="30"
                                        Height="20"/>
-            </TextBlock>
+                </TextBlock>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>
